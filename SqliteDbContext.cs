@@ -17,8 +17,7 @@ namespace EF_SQLite
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().ToTable("Products", "test");
-            modelBuilder.Entity<Castomer>().ToTable("Castomers", "test");
+            modelBuilder.Entity<Product>().ToTable("Products", "test");           
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(k => k.ProductId);
