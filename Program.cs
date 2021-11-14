@@ -21,7 +21,9 @@ namespace EF_SQLite
                 new Product(){PuroductName = "Banana", Price = 20.99}
             });
             await dbContext.SaveChangesAsync();
+
             Console.WriteLine("getting database data");
+
             dbContext.Products?.ToList().ForEach(p =>
             {
                 Console.WriteLine($"{p.PuroductName} Price: {p.Price}");
