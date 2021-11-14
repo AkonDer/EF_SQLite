@@ -17,12 +17,21 @@ namespace EF_SQLite
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().ToTable("Products", "test");           
+            modelBuilder.Entity<Product>().ToTable("Products", "test");         
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(k => k.ProductId);
                 entity.HasIndex(i => i.PuroductName).IsUnique();
-            });
+            });        
+
+            modelBuilder.Entity<Customer>().ToTable("Customers", "test");
+
+            modelBuilder.Entity<Order>().ToTable("Orders", "test");
+            modelBuilder.Entity<Order>()
+                .HasOne(c => c.Customer)
+                .WithMany(o => o.Orders)
+                .OnDelete(DeleteBehavior.Cascade); // Включение каскадного удаления
+
             base.OnModelCreating(modelBuilder);
         }
     }

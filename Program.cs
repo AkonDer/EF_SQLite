@@ -16,15 +16,15 @@ namespace EF_SQLite
             await dbContext.Database.EnsureCreatedAsync();
             await dbContext.Products.AddRangeAsync(new Product[]
             {
-                new Product(){PuroductName = "Apple", Price = 10.99, Note = "test"},
-                new Product(){PuroductName = "Mango", Price = 15.99, Note = "test"},
-                new Product(){PuroductName = "Banana", Price = 20.99, Note = "test"},
+                new Product(){PuroductName = "Apple", Price = 10.99},
+                new Product(){PuroductName = "Mango", Price = 15.99},
+                new Product(){PuroductName = "Banana", Price = 20.99}
             });
             await dbContext.SaveChangesAsync();
             Console.WriteLine("getting database data");
             dbContext.Products?.ToList().ForEach(p =>
             {
-                Console.WriteLine($"{p.PuroductName} Price: {p.Price} Note: {p.Note}");
+                Console.WriteLine($"{p.PuroductName} Price: {p.Price}");
             });
             Console.ReadLine();
         }
